@@ -1,0 +1,107 @@
+/* Edit Node Page Styling */
+
+/* Form group styling */
+.form-group {
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+/* Label styling */
+:global(.nextui-input-label) {
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  color: #9ca3af !important; /* text-gray-400 */
+  margin-bottom: 0.5rem !important;
+  display: block !important;
+}
+
+/* Input styling */
+:global(.nextui-input-wrapper) {
+  background-color: #1f2937 !important; /* bg-gray-800 */
+  border-color: #374151 !important; /* border-gray-700 */
+  transition: all 0.2s ease;
+  min-height: 2.5rem !important;
+}
+
+:global(.nextui-input-wrapper:hover) {
+  border-color: #4b5563 !important; /* border-gray-600 */
+}
+
+:global(.nextui-input-wrapper:focus-within) {
+  border-color: #3b82f6 !important; /* border-blue-500 */
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.5);
+}
+
+/* Input text color */
+:global(.nextui-input) {
+  color: #f9fafb !important; /* text-white */
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+}
+
+/* Select styling */
+:global(.nextui-select-trigger) {
+  background-color: #1f2937 !important; /* bg-gray-800 */
+  border-color: #374151 !important; /* border-gray-700 */
+  min-height: 2.5rem !important;
+}
+
+:global(.nextui-select-trigger:hover) {
+  border-color: #4b5563 !important; /* border-gray-600 */
+}
+
+:global(.nextui-select-trigger:focus) {
+  border-color: #3b82f6 !important; /* border-blue-500 */
+}
+
+/* Select value color */
+:global(.nextui-select-value) {
+  color: #f9fafb !important; /* text-white */
+  font-size: 0.875rem !important;
+}
+
+/* Error message styling */
+:global(.nextui-input-helper-text) {
+  color: #ef4444 !important; /* text-red-500 */
+  font-size: 0.75rem !important;
+  margin-top: 0.25rem !important;
+}
+
+/* Button hover effects */
+:global(.nextui-button) {
+  transition: all 0.2s ease;
+}
+
+/* Card styling */
+:global(.nextui-card) {
+  background-color: #111827 !important; /* bg-gray-900 */
+  border: 1px solid #1f2937 !important; /* border-gray-800 */
+}
+
+/* Ensure proper spacing in the card body */
+:global(.nextui-card-body) {
+  padding: 1.5rem !important;
+}
+
+/* Fix spacing for inputs */
+:global(.nextui-input-main-container) {
+  margin-bottom: 0 !important;
+}
+
+/* Ensure the input container has proper height */
+:global(.nextui-input-container) {
+  min-height: 2.5rem !important;
+}
+
+/* Tooltip styling */
+:global(.nextui-tooltip-content) {
+  background-color: #1f2937 !important;
+  border: 1px solid #374151 !important;
+  color: #f9fafb !important;
+}
+
+/* Fix spacing for grid layout */
+.grid.grid-cols-1.gap-6 {
+  row-gap: 1.5rem !important;
+}

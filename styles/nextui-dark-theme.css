@@ -1,0 +1,293 @@
+/* NextUI Dark Theme Styles - Enhanced Modern UI */
+
+/* Apply dark theme base styles */
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  background-color: #0a0f1a; /* Slightly deeper background */
+  color: #e9ecef;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.01em;
+}
+
+/* Modern gradient background */
+.gradient-bg {
+  background: linear-gradient(135deg, #0c1527 0%, #060c16 100%);
+}
+
+/* Cards, Panels and Containers */
+.nextui-c-iVzbCs, 
+.nextui-c-PJLV,
+.nextui-c-egxOLa,
+.nextui-card {
+  background-color: #111827 !important;
+  border-color: rgba(30, 41, 59, 0.6) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+/* Card hover effects */
+.nextui-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* Modals, Dialogs and Overlays */
+.nextui-modal-content,
+.nextui-c-PJLV[role="dialog"],
+.nextui-popover-content,
+[data-overlay-container="true"] > div,
+[role="menu"],
+.nextui-dropdown-menu,
+[data-backdrop-visible="true"] {
+  background-color: #0b101b !important;
+  background: #0b101b !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid rgba(24, 34, 52, 0.8) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+  color: #e5e7eb !important;
+  border-radius: 0.5rem !important;
+}
+
+/* Modal parts */
+.nextui-modal-header,
+.nextui-modal-footer {
+  background-color: #0b101b !important;
+  border-color: rgba(24, 34, 52, 0.6) !important;
+}
+
+.nextui-modal-body {
+  padding: 20px !important;
+  background-color: #0b101b !important;
+}
+
+/* Inputs and Form Controls */
+.nextui-input-wrapper,
+.nextui-c-hYLRKq, 
+.nextui-c-gEEnVX,
+input, textarea, select {
+  background-color: rgba(17, 24, 39, 0.8) !important;
+  border-color: #2d3a4f !important;
+  color: #e5e7eb !important;
+  transition: all 0.2s ease !important;
+  border-radius: 0.375rem !important;
+}
+
+.nextui-input-placeholder,
+.nextui-c-eXOOPO,
+.nextui-c-iwmZdG {
+  color: #9ca3af !important;
+  position: absolute !important;
+  transform-origin: 0 0 !important;
+  pointer-events: none !important;
+  transition: transform 0.15s ease !important;
+  z-index: 1 !important;
+}
+
+.nextui-input-wrapper:focus-within .nextui-input-placeholder,
+.nextui-input-wrapper:focus-within .nextui-c-eXOOPO,
+.nextui-input-wrapper:focus-within .nextui-c-iwmZdG,
+.nextui-input-wrapper[data-has-value="true"] .nextui-input-placeholder,
+.nextui-input-wrapper[data-has-value="true"] .nextui-c-eXOOPO,
+.nextui-input-wrapper[data-has-value="true"] .nextui-c-iwmZdG,
+.nextui-c-hYLRKq[data-has-value="true"] .nextui-c-eXOOPO,
+.nextui-c-gEEnVX[data-has-value="true"] .nextui-c-iwmZdG {
+  transform: translateY(-10px) scale(0.85) !important;
+  background-color: transparent !important;
+  color: #4363f7 !important;
+}
+
+.nextui-input,
+.nextui-c-jeuecp,
+.nextui-c-hkKLfu {
+  padding-top: 16px !important;
+  padding-bottom: 8px !important;
+  height: auto !important;
+  min-height: 42px !important;
+}
+
+/* Input focus states */
+.nextui-input-wrapper:focus-within,
+input:focus, textarea:focus, select:focus {
+  border-color: #4363f7 !important;
+  box-shadow: 0 0 0 2px rgba(67, 99, 247, 0.2) !important;
+}
+
+/* Buttons */
+.nextui-c-iWjDFM,
+.nextui-button {
+  font-weight: 500 !important;
+  border-radius: 0.375rem !important;
+  transition: all 0.15s ease !important;
+  letter-spacing: -0.01em !important;
+}
+
+.nextui-c-iWjDFM-hkKLfu-color-default {
+  background-color: #4363f7 !important;
+  color: #ffffff !important;
+}
+
+/* Gradient primary buttons */
+.nextui-button-primary,
+.nextui-c-iWjDFM-iUWELv-color-primary {
+  background: linear-gradient(135deg, #4363f7 0%, #2549db 100%) !important;
+  box-shadow: 0 2px 10px rgba(67, 99, 247, 0.25) !important;
+}
+
+.nextui-button-primary:hover,
+.nextui-c-iWjDFM-iUWELv-color-primary:hover {
+  background: linear-gradient(135deg, #5373ff 0%, #3659eb 100%) !important;
+  box-shadow: 0 4px 15px rgba(67, 99, 247, 0.35) !important;
+  transform: translateY(-1px);
+}
+
+/* Button icons - fixed to ensure visibility */
+.nextui-button svg,
+.nextui-c-iWjDFM svg,
+button svg {
+  min-width: 18px !important;
+  min-height: 18px !important;
+  width: auto !important;
+  height: auto !important;
+  margin-right: 6px !important;
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Icon-only buttons */
+button[data-only-icon="true"] svg,
+.icon-only svg {
+  margin: 0 !important;
+  min-width: 20px !important;
+  min-height: 20px !important;
+}
+
+/* Actions button icons in tables or lists */
+.action-icons svg,
+.action-button svg,
+.icon-button svg {
+  min-width: 18px !important;
+  min-height: 18px !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Dropdown items */
+.nextui-dropdown-item {
+  border-radius: 0.25rem !important;
+  margin: 0.15rem 0.35rem !important;
+  padding: 0.5rem 0.75rem !important;
+  transition: all 0.15s ease-in-out !important;
+}
+
+.nextui-dropdown-item:hover {
+  background-color: #162032 !important;
+  transform: translateX(2px);
+}
+
+/* Disable backdrop effects */
+[data-backdrop="true"]::before,
+[data-backdrop-visible="true"]::before {
+  display: none !important;
+}
+
+/* Close buttons */
+.nextui-c-iVzbCs button[aria-label="Close"],
+.nextui-modal-close-button {
+  color: #e5e7eb !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  border-radius: 50% !important;
+  transition: all 0.15s ease !important;
+}
+
+.nextui-c-iVzbCs button[aria-label="Close"]:hover,
+.nextui-modal-close-button:hover {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  transform: rotate(90deg);
+}
+
+/* Tabs */
+.nextui-tabs-panel[data-selected="true"] {
+  color: #4363f7 !important;
+  font-weight: 500 !important;
+}
+
+.nextui-tabs-cursor {
+  background-color: #4363f7 !important;
+  height: 2px !important;
+}
+
+/* Tables */
+.nextui-table {
+  background-color: #111827 !important;
+  border-radius: 0.5rem !important;
+  overflow: hidden !important;
+}
+
+.nextui-table-header-column {
+  background-color: #131c2e !important;
+  color: #a3adc2 !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.025em !important;
+}
+
+.nextui-table-body-row {
+  border-bottom-color: rgba(30, 41, 59, 0.5) !important;
+  transition: background-color 0.15s ease !important;
+}
+
+.nextui-table-body-row:hover {
+  background-color: rgba(15, 23, 42, 0.5) !important;
+}
+
+/* Status indicators and badges */
+.status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.status-online {
+  background-color: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+.status-offline {
+  background-color: #ef4444;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+}
+
+.status-loading {
+  background-color: #f59e0b;
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+}
+
+/* Modern scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(71, 85, 105, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(71, 85, 105, 0.7);
+}

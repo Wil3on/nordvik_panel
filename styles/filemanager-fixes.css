@@ -1,0 +1,685 @@
+/* Fix for transparent popup menus and modals in the file manager */
+
+/* Global reset for all menu and dialog components */
+.nextui-modal-content,
+.nextui-c-PJLV[role="dialog"],
+.nextui-popover-content,
+[data-overlay-container="true"] > div,
+section[role="dialog"],
+div[role="menu"],
+.nextui-dropdown-menu,
+.nextui-dropdown-content,
+.nextui-popover-content,
+.nextui-c-dhzjXW,
+.nextui-c-ewjfRy,
+.nextui-c-hhqeqX,
+[data-backdrop-visible="true"],
+.nextui-c-iTPCAT,
+.nextui-c-iTPCAT-dYcWJu-disableBlur-false,
+.nextui-c-iTPCAT-dYcWJu-disableAnimation-false,
+.nextui-c-hYLRKq,
+.nextui-c-egxOLa,
+.nextui-c-gEEnVX,
+.nextui-c-gEEnVX-ibCoFfk-css,
+.nextui-c-gEEnVX-ijkBdQb-css {
+  /* Nordvik dark navy blue theme colors */
+  background: #0b101b !important; /* Dark navy blue */
+  background-color: #0b101b !important;
+  color: #e5e7eb !important; /* gray-200 */
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid #182234 !important; /* Darker navy blue border */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Enhanced file manager layout */
+.file-manager-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #0a0f1a;
+  border: 1px solid rgba(30, 41, 59, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* File manager header styling */
+.file-manager-header {
+  background: linear-gradient(135deg, #1e293b 0%, #111827 100%);
+  border-bottom: 1px solid rgba(30, 41, 59, 0.4);
+  padding: 12px 16px;
+}
+
+/* File manager toolbar styling */
+.file-manager-toolbar {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  background-color: rgba(17, 24, 39, 0.5);
+  border-bottom: 1px solid rgba(30, 41, 59, 0.2);
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Breadcrumb path styling */
+.breadcrumb-path {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: thin;
+  padding: 4px 0;
+}
+
+.breadcrumb-item {
+  display: inline-flex;
+  align-items: center;
+  color: #9ca3af;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  font-size: 0.875rem;
+}
+
+.breadcrumb-item:hover {
+  color: #3b82f6;
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+.breadcrumb-item.active {
+  color: #3b82f6;
+  font-weight: 500;
+}
+
+/* File table styling */
+.file-manager-table {
+  background-color: transparent !important;
+}
+
+.file-manager-table .nextui-table-container {
+  background-color: rgba(17, 24, 39, 0.3) !important;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.file-manager-table th {
+  background-color: rgba(17, 24, 39, 0.6) !important;
+  color: #e5e7eb !important;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 12px 16px !important;
+  border-bottom: 1px solid rgba(30, 41, 59, 0.4) !important;
+}
+
+.file-manager-table td {
+  padding: 8px 16px !important;
+  border-bottom: 1px solid rgba(30, 41, 59, 0.2) !important;
+  font-size: 0.875rem;
+}
+
+.file-manager-table tr:hover td {
+  background-color: rgba(30, 41, 59, 0.3) !important;
+}
+
+/* File item styling */
+.file-item {
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.file-item:hover {
+  background-color: rgba(30, 41, 59, 0.3);
+}
+
+.file-item .file-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+  border-radius: 6px;
+}
+
+.file-item .file-icon.folder {
+  background-color: rgba(251, 191, 36, 0.1);
+  color: #fbbf24;
+}
+
+.file-item .file-icon.file {
+  background-color: rgba(96, 165, 250, 0.1);
+  color: #60a5fa;
+}
+
+/* Actions dropdown styling */
+.file-actions .nextui-dropdown-button {
+  min-width: auto !important;
+  width: 32px !important;
+  height: 32px !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: transparent !important;
+  border: 1px solid rgba(30, 41, 59, 0.3) !important;
+  border-radius: 4px !important;
+}
+
+.file-actions .nextui-dropdown-button:hover {
+  background-color: rgba(30, 41, 59, 0.5) !important;
+}
+
+/* File search input styling */
+.file-search-input {
+  background-color: rgba(17, 24, 39, 0.5) !important;
+  border: 1px solid rgba(30, 41, 59, 0.4) !important;
+  border-radius: 6px !important;
+  color: #e5e7eb !important;
+  width: 100%;
+  max-width: 320px;
+  transition: all 0.2s ease;
+}
+
+.file-search-input:focus {
+  background-color: rgba(17, 24, 39, 0.7) !important;
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.25) !important;
+}
+
+/* Empty state styling */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  color: #9ca3af;
+  text-align: center;
+}
+
+.empty-state-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+/* Upload progress styling */
+.upload-progress {
+  margin-top: 8px;
+  background-color: rgba(17, 24, 39, 0.3) !important;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.upload-progress-bar {
+  height: 4px;
+  background: linear-gradient(90deg, #3b82f6, #4f46e5);
+  transition: width 0.3s ease;
+}
+
+/* File action buttons in modals */
+.file-modal-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+/* File editor styling */
+.file-editor {
+  border: 1px solid rgba(30, 41, 59, 0.4);
+  border-radius: 6px;
+  overflow: hidden;
+  min-height: 300px;
+  margin-top: 16px;
+  background-color: rgba(10, 15, 26, 0.7);
+}
+
+.file-editor textarea {
+  width: 100%;
+  min-height: 300px;
+  padding: 12px;
+  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #e5e7eb;
+  background-color: transparent;
+  resize: vertical;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.file-item {
+  animation: fadeIn 0.3s ease;
+}
+
+/* File manager tabs */
+.file-manager-tabs {
+  background-color: rgba(17, 24, 39, 0.3) !important;
+  margin-bottom: 16px;
+}
+
+.file-manager-tabs [data-selected="true"] {
+  color: #3b82f6 !important;
+  font-weight: 500;
+}
+
+/* Popup menu items styling */
+.nextui-dropdown-item,
+[role="menuitem"] {
+  color: #e5e7eb !important;
+  padding: 8px 12px !important;
+  margin: 2px 0 !important;
+  border-radius: 4px !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Modal headers and footers */
+.nextui-modal-header,
+.nextui-modal-footer {
+  background-color: #0b101b !important;
+  border-color: #182234 !important;
+  padding: 16px !important;
+}
+
+.nextui-modal-header {
+  border-bottom: 1px solid #182234 !important;
+}
+
+.nextui-modal-footer {
+  border-top: 1px solid #182234 !important;
+}
+
+.nextui-modal-body {
+  padding: 16px !important;
+  background-color: #0b101b !important;
+}
+
+/* Ensure all modal content has proper background */
+.nextui-modal-container,
+.nextui-modal-wrapper,
+.nextui-modal,
+.nextui-modal-content,
+.nextui-c-iTPCAT-fGHEql-fullScreen-true {
+  background-color: #0b101b !important;
+}
+
+/* Form inputs and textareas */
+.nextui-modal-content input,
+.nextui-modal-content textarea,
+input, textarea, select {
+  background-color: #141e32 !important; /* Slightly lighter navy blue */
+  border: 1px solid #1f2a3f !important; /* Border for inputs */
+  color: #f9fafb !important; /* gray-50 */
+  border-radius: 4px !important;
+  padding: 10px 12px !important;
+  transition: all 0.2s ease !important;
+  line-height: 1.5 !important;
+}
+
+/* Placeholder text styling */
+input::placeholder,
+textarea::placeholder,
+.nextui-input-placeholder,
+.nextui-c-eXOOPO,
+[data-placeholder],
+.nextui-c-iwmZdG {
+  color: #6b7280 !important; /* gray-500 */
+  opacity: 0.7 !important;
+}
+
+/* Label styling */
+.nextui-c-hzQjrs,
+.nextui-c-hYLRKq,
+.nextui-c-hYLRKq-gxgHfC-size-md,
+.nextui-c-hYLRKq-gxgHfC-size-md-true,
+.nextui-c-hYLRKq-gxgHfC-size-md-false,
+label {
+  color: #9ca3af !important; /* gray-400 */
+  margin-bottom: 6px !important;
+  font-size: 0.875rem !important;
+}
+
+/* Input wrapper styling */
+.nextui-c-hYLRKq,
+.nextui-c-eFfoBo,
+.nextui-c-iTPCAT,
+.nextui-c-hYLRKq-bRtIdU-isTextarea-true,
+.nextui-c-hYLRKq-bRtIdU-isTextarea-false,
+.nextui-input-wrapper,
+.nextui-c-PJLV-gulvcB-isFocused-true,
+.nextui-c-PJLV-gulvcB-isFocused-false {
+  background-color: #141e32 !important;
+  border-color: #1f2a3f !important;
+  min-height: 42px !important;
+}
+
+/* Input content area */
+.nextui-c-eXOOPO,
+.nextui-c-iwmZdG,
+.nextui-c-jeuecp,
+.nextui-input-main-container {
+  padding: 0 !important;
+}
+
+.nextui-c-hYLRKq-gqqZgv-helperColor-default,
+.nextui-c-hYLRKq-gqqZgv-helperColor-error,
+.nextui-c-hYLRKq-gqqZgv-helperColor-success,
+.nextui-c-hYLRKq-gqqZgv-helperColor-warning {
+  margin-top: 6px !important;
+}
+
+.nextui-modal-content input:focus,
+.nextui-modal-content textarea:focus,
+input:focus, textarea:focus, select:focus {
+  border-color: #3b82f6 !important; /* blue-500 */
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3) !important;
+  outline: none !important;
+}
+
+/* File manager specific styles */
+.file-manager-container {
+  border-radius: 6px !important;
+  overflow: hidden !important;
+  border: 1px solid #182234 !important;
+}
+
+.file-manager-item {
+  transition: all 0.2s ease !important;
+  border-radius: 4px !important;
+  margin: 2px 0 !important;
+}
+
+.file-manager-item:hover {
+  background-color: rgba(37, 99, 235, 0.1) !important;
+}
+
+/* Action button styling - match the Nordvik panel buttons */
+.nextui-button,
+button[type="button"],
+button[type="submit"] {
+  background-color: #0b101b !important; /* Match the dark navy background */
+  border: 1px solid #182234 !important; /* Same border as other elements */
+  color: #f9fafb !important;
+  border-radius: 4px !important;
+  padding: 6px 12px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Primary action button */
+.nextui-button-primary,
+button[type="submit"] {
+  background-color: #10b981 !important; /* Green for primary actions */
+  border-color: #059669 !important;
+  color: white !important;
+}
+
+/* Danger button */
+.nextui-button-danger,
+button.danger,
+button[data-danger="true"] {
+  background-color: #ef4444 !important; /* Red for dangerous actions */
+  border-color: #dc2626 !important;
+  color: white !important;
+}
+
+/* Warning button */
+.nextui-button-warning,
+button.warning {
+  background-color: #f59e0b !important; /* Amber for warning actions */
+  border-color: #d97706 !important;
+  color: white !important;
+}
+
+/* Hover effects for buttons */
+.nextui-button:hover,
+button[type="button"]:hover,
+button[type="submit"]:hover {
+  opacity: 0.9 !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Hover effects for menu items - Nordvik blue accent color */
+[role="menuitem"]:hover,
+.nextui-dropdown-item:hover,
+.nextui-c-jMTBsW:hover,
+.nextui-c-jklhtj:hover {
+  background-color: rgba(37, 99, 235, 0.2) !important; /* blue-600 with opacity */
+  transform: translateX(2px) !important;
+}
+
+/* File icons styling */
+.file-icon, 
+.folder-icon {
+  color: #60a5fa !important; /* blue-400 */
+  margin-right: 8px !important;
+}
+
+.folder-icon {
+  color: #fbbf24 !important; /* amber-400 */
+}
+
+/* Breadcrumb styling */
+.breadcrumb-item {
+  color: #9ca3af !important; /* gray-400 */
+  transition: all 0.2s ease !important;
+}
+
+.breadcrumb-item:hover {
+  color: #60a5fa !important; /* blue-400 */
+}
+
+.breadcrumb-separator {
+  color: #4b5563 !important; /* gray-600 */
+  margin: 0 4px !important;
+}
+
+/* Override any backdrop effects */
+[data-backdrop="true"]::before,
+[data-backdrop-visible="true"]::before {
+  display: none !important;
+}
+
+/* Ensure menu items are visible on both themes */
+[role="menuitem"],
+.nextui-dropdown-item,
+.nextui-c-jMTBsW,
+.nextui-c-jMTBsW:hover,
+.nextui-c-jklhtj {
+  background-color: transparent !important;
+}
+
+/* Loading spinner improvements */
+.nextui-spinner {
+  border-color: #3b82f6 transparent #3b82f6 transparent !important;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: #0b101b !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1f2a3f !important;
+  border-radius: 4px !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2d3a50 !important;
+}
+
+/* Fix for any remaining white backgrounds */
+.nextui-popover,
+.nextui-popover-content,
+.nextui-dropdown,
+.nextui-dropdown-content,
+.nextui-c-kRHeuF,
+.nextui-c-kRHeuF-ibSUyDN-css,
+.nextui-c-eFfoBo,
+.nextui-c-eFfoBo-ihjmVOc-css,
+[role="presentation"] {
+  background-color: #0b101b !important;
+  background: #0b101b !important;
+  color: #e5e7eb !important;
+}
+
+/* Modal close button styling */
+.nextui-modal-close-button,
+button[aria-label="Close"],
+.nextui-c-PJLV-idhzjXW-css {
+  background-color: transparent !important;
+  color: #9ca3af !important; /* gray-400 */
+  opacity: 0.8 !important;
+  transition: all 0.2s ease !important;
+  border-radius: 4px !important;
+  padding: 6px !important;
+  margin: 4px !important;
+  position: absolute !important;
+  top: 12px !important;
+  right: 12px !important;
+  z-index: 10 !important;
+}
+
+.nextui-modal-close-button:hover,
+button[aria-label="Close"]:hover,
+.nextui-c-PJLV-idhzjXW-css:hover {
+  background-color: #1f2a3f !important;
+  color: #f9fafb !important; /* gray-50 */
+  opacity: 1 !important;
+}
+
+/* Modal header styling */
+.nextui-modal-header,
+.nextui-c-iDzHSK {
+  padding: 16px 24px !important;
+  border-bottom: 1px solid #182234 !important;
+  position: relative !important;
+}
+
+/* Ensure header text doesn't wrap or overflow */
+.nextui-modal-header h2,
+.nextui-modal-header div,
+.nextui-c-iDzHSK h2,
+.nextui-c-iDzHSK div {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  padding-right: 40px !important; /* Space for close button */
+}
+
+/* Modal body styling */
+.nextui-modal-body,
+.nextui-c-hhqfap {
+  padding: 24px !important;
+  background-color: #0b101b !important;
+}
+
+/* Modal footer styling */
+.nextui-modal-footer,
+.nextui-c-iDzHSK-ijXsYIw-css {
+  padding: 16px 24px !important;
+  border-top: 1px solid #182234 !important;
+}
+
+/* Modal content styling */
+.nextui-modal-content,
+.nextui-c-dlXlJr {
+  background-color: #0b101b !important;
+  border: 1px solid #182234 !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+
+/* Custom max-width class */
+.max-w-3xl {
+  max-width: 50% !important;
+}
+
+.max-w-md {
+  max-width: 50% !important;
+}
+
+/* File editor/viewer modal size adjustments */
+.file-editor-modal .nextui-modal-content,
+.file-viewer-modal .nextui-modal-content,
+.create-file-modal .nextui-modal-content {
+  width: 100% !important;
+  max-width: 50% !important;
+  height: 100vh !important;
+  max-height: 100vh !important;
+  border-radius: 0 !important;
+  margin: 0 auto !important;
+}
+
+.file-editor-modal .nextui-modal-body,
+.file-viewer-modal .nextui-modal-body,
+.create-file-modal .nextui-modal-body {
+  height: calc(100vh - 100px) !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.file-editor-modal .file-editor,
+.file-viewer-modal .file-viewer,
+.create-file-modal .file-editor {
+  flex: 1 !important;
+  min-height: 100% !important;
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.file-editor-modal .file-editor textarea,
+.file-viewer-modal pre,
+.create-file-modal .file-editor textarea {
+  min-height: 100% !important;
+  height: 100% !important;
+  width: 100% !important;
+  padding: 16px !important;
+  margin: 0 !important;
+  font-family: 'Menlo', 'Monaco', 'Courier New', monospace !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  overflow: auto !important;
+}
+
+/* Fix for any remaining white backgrounds */
+.nextui-c-iDzHSK,
+.nextui-c-hhqfap,
+.nextui-c-iDzHSK-ijXsYIw-css,
+.nextui-c-dlXlJr,
+.nextui-modal,
+.nextui-modal-container,
+.nextui-c-PJLV-ikdQGvL-css,
+[data-overlay-container="true"] > div {
+  background-color: #0b101b !important;
+}
+
+/* Ensure proper spacing between form elements */
+.nextui-input-wrapper,
+.nextui-textarea-wrapper {
+  margin-bottom: 16px !important;
+}
+
+/* Fix for any text overflow issues */
+.nextui-input-content,
+.nextui-textarea-content {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}

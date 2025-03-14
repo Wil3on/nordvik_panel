@@ -1,0 +1,140 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// User model for authentication and profile management
+model User {
+  id            String    @id @default(uuid())
+  name          String
+  lastName      String?
+  email         String    @unique
+  password      String
+  profilePicture String?
+  role          Role      @default(USER)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  servers       Server[]
+  apiKeys       ApiKey[]
+}
+
+// Role enum for user permissions
+enum Role {
+  ADMIN
+  USER
+}
+
+// Game model for game server templates
+model Game {
+  id              String    @id @default(uuid())
+  name            String
+  steamAppId      String?
+  gameCode        String    @unique
+  description     String
+  supportedOS     Json      // Store supported OS as JSON { windows: boolean, linux: boolean }
+  startupCommands String?   // Store startup commands as string
+  defaultConfig   Json?     // Store default configuration as JSON
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  servers         Server[]
+}
+
+// Server model for game server instances
+model Server {
+  id          String        @id @default(uuid())
+  name        String
+  nodeId      String
+  node        Node          @relation(fields: [nodeId], references: [id])
+  gameId      String
+  game        Game          @relation(fields: [gameId], references: [id])
+  userId      String
+  user        User          @relation(fields: [userId], references: [id])
+  os          OperatingSystem
+  status      ServerStatus  @default(STOPPED)
+  ports       Json          // Store port mappings as JSON
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  events      ServerEvent[]
+}
+
+// Operating System enum for server OS selection
+enum OperatingSystem {
+  LINUX
+  WINDOWS
+}
+
+// Server Status enum for tracking server state
+enum ServerStatus {
+  INSTALLING
+  DOWNLOADING
+  FAILED
+  CANCELED
+  SUSPENDED
+  DELETED
+  STOPPED
+  STARTING
+  ONLINE
+  OFFLINE
+  UPDATING
+  RESTARTING
+}
+
+// Node model for server hosting machines
+model Node {
+  id          String    @id @default(uuid())
+  name        String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  os          OperatingSystem
+  uid         String    @unique
+  ipAddress   String
+  port        Int
+  username    String
+  password    String
+  authToken   String    @unique @default(uuid())
+  description String?
+  status      String    @default("OFFLINE")
+  servers     Server[]
+}
+
+// Server Event model for tracking server activities
+model ServerEvent {
+  id        String    @id @default(uuid())
+  serverId  String
+  server    Server    @relation(fields: [serverId], references: [id])
+  type      EventType
+  message   String
+  createdAt DateTime  @default(now())
+}
+
+// Event Type enum for categorizing server events
+enum EventType {
+  INSTALLATION
+  START
+  STOP
+  RESTART
+  UPDATE
+  ERROR
+  DELETION
+}
+
+// API Key model for third-party integrations
+model ApiKey {
+  id          String    @id @default(uuid())
+  name        String
+  key         String    @unique
+  userId      String
+  user        User      @relation(fields: [userId], references: [id])
+  permissions Json      // Store permissions as JSON { read: boolean, write: boolean }
+  lastUsed    DateTime?
+  expiresAt   DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
